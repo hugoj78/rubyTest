@@ -1,0 +1,10 @@
+<h1>Restaurant :</h1>
+
+<div>
+nom : <%= @restaurant.name %>
+<br>
+rate : <%= @restaurant.rating %>
+</div>
+
+<br>
+<%= button_to 'HomePage', restaurants_path(), method: 'get'%>
