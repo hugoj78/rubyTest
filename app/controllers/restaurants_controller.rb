@@ -7,7 +7,7 @@ class RestaurantsController < ApplicationController
     end
 
     def show
-        
+        @reviews = Review.where(restaurant: params[:id])
     end
 
     def new
@@ -33,6 +33,10 @@ class RestaurantsController < ApplicationController
     def destroy
         @restaurant.destroy
         redirect_to restaurants_path
+    end
+
+    def top
+        @restaurants = Restaurant.where(rating: 5)
       end
 
     private

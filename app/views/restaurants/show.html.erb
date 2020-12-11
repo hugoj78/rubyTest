@@ -5,6 +5,30 @@ nom : <%= @restaurant.name %>
 <br>
 rate : <%= @restaurant.rating %>
 </div>
+<br>
 
+<% if @restaurant.review.count != 0 %>
+    <div>
+        <p>Review</p>
+
+            <ul>
+                <% @restaurant.review.each do |r| %>
+                <li>
+                                content : <%= r.content %>
+                                <br>
+                                rate : <%= r.rating %>
+                                <br>
+                                <%= button_to "Edit", edit_restaurant_review_path(@restaurant, r), method: 'get'%>
+                                <%= button_to "Remove", restaurant_review_path(@restaurant, r), method: 'delete', data: { confirm: 'Are you sure?' } %>
+                            </li>
+                <% end %>
+        </ul>
+
+    </div>
+<% end %>
+
+
+<br>
+<%= button_to 'Add review', new_restaurant_review_path(@restaurant), method: 'get' %>
 <br>
 <%= button_to 'HomePage', restaurants_path(), method: 'get'%>
